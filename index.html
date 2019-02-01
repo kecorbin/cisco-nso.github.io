@@ -1,1 +1,94 @@
-<h1>Hello</h1>
+<h1 id="nsoinstallationguide">NSO Installation Guide</h1>
+
+<p>This document provides instructions on getting started with Network Services Orchestrator.  </p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>NSO can be installed on a Mac, or Linux. The additional requirements are:</p>
+
+<ul>
+<li>Java</li>
+
+<li>Ant</li>
+</ul>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>This evaluation copy has been provided under the terms of the Cisco
+NSO Evaluation License. There are two versions of the NSO installer:</p>
+
+<p>for MacOS and Linux systems respectively:</p>
+
+<ol>
+<li><p><a href="http://cs.co/nso-mac">NSO 4.7 Darwin</a></p></li>
+
+<li><p><a href="http://cs.co/nso-linux">NSO 4.7 Linux</a></p></li>
+</ol>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="unpackthensoinstallerverifydigitalsignature">Unpack the NSO Installer, verify digital signature.</h3>
+
+<p>The NSO installation is delivered with a cryptographic signature to make it possible to verify that the installation has not been altered or corrupted. This can be guaranteed since the signature was created by using a combination of cryptographic hash and public key
+encryption.</p>
+
+<p>Unpacking the NSO installer is performed by executing the downloaded distribution using a command like: <code>sh nso-VERSION.OS.ARCH.signed.bin</code></p>
+
+<p>The variables in the command VERSION refers to the NSO version to install, OS refers to the Operating System (linux for any Linux distribution and darwin for OS X) and ARCH refers to the CPU
+architecture (x86_64). For Example:</p>
+
+<pre><code>$ sh nso-4.7.linux.x86_64.signed.bin
+</code></pre>
+
+<h4 id="whatsincluded">What's Included</h4>
+
+<p>Once NSO is unpacked, all the files are unpacked in the current directory.</p>
+
+<ol>
+<li>The NSO installer nso-VERSION.OS.ARCH.installer.bin</li>
+
+<li>Signature generated for the NSO image nso-VERSION.OS.ARCH.installer.bin.signature</li>
+
+<li>An enclosed Cisco signed tailf.cer x.509 end-entity certificate
+containing public key that is used to verify the signature.</li>
+
+<li>README.signature file which briefs you more details on the unpacked content and the steps on "How to run the signature verification
+program". If you would like to manually verify the signature, please
+refer to the steps in this file.</li>
+
+<li>cisco<em>x509</em>verify_release.py python program that can be used to verify the 3-tier x.509 certificate chain and signature.</li>
+</ol>
+
+<h4 id="installingnso">Installing NSO</h4>
+
+<p>Local Install of NSO Software is performed in a single user specified directory, for example in your home directory $HOME. It is always recommended to install NSO in a directory named as the version of the release. This command might look something like this. <code>$ sh nso-VERSION.OS.ARCH.installer.bin $HOME/ncs-VERSION --local-install</code></p>
+
+<p>The variables in the command VERSION refers to the NSO version to
+install, OS refers to the Operating System (linux for any Linux
+distribution and darwin for OS X) and ARCH refers to the CPU
+architecture (x86_64). The --local-install parameter is an optional
+parameter. For Example:</p>
+
+<pre><code>$ sh nso-4.7.linux.x86_64.installer.bin $HOME/nso-4.7
+</code></pre>
+
+<p>The installation program creates a shell script file named <code>ncsrc</code> in each NSO installation, which sets the environment variables. <code>source</code> this file to get these settings in your shell. You may want to add this sourcing command to your login sequence, such as <code>.bashrc</code>.  For csh/tcsh users there is a <code>ncsrc.tcsh</code> file using csh/tcsh syntax. The
+example below assumes that you are using bash, other versions of
+/bin/sh may require that you use . instead of source.</p>
+
+<pre><code> $ source $HOME/ncs-4.7/ncsrc
+</code></pre>
+
+<h2 id="gettingstarted">GETTING STARTED</h2>
+
+<p>We recommend that you start with the Getting Started guide in the doc
+directory <code>$HOME/ncs-VERSION/doc/pdf/nso_getting_started-VERSION.pdf</code></p>
+
+<p>There is a lot of examples in the <code>$HOME/ncs-VERSION/examples.ncs</code>
+directory. Each example has a <code>README</code> file that explains how to run it.</p>
+
+<h2 id="stillneedhelp">Still Need help?</h2>
+
+<p>There is a lot of material on the <a href="https://community.cisco.com/t5/nso-developer-hub/ct-p/5672j-dev-nso">NSO Developer Hub</a></p>
+
+<p>This is also where you can ask questions about anything NSO-related.</p>
